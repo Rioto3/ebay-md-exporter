@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBay MD Exporter</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>eBay MD Exporter</h1>
+            <div class="status" id="status">準備中...</div>
+        </div>
+        
+        <div class="content">
+            <div class="info-section">
+                <div class="current-page" id="currentPage">
+                    eBay商品ページを開いてください
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button id="exportBtn" class="export-btn" disabled>
+                    <span class="btn-icon">📥</span>
+                    MDエクスポート
+                </button>
+                
+                <div class="options">
+                    <label class="option">
+                        <input type="checkbox" id="includeImages" checked>
+                        画像URLを含める
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" id="includeDescription" checked>
+                        商品説明を含める
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" id="includeShipping" checked>
+                        配送情報を含める
+                    </label>
+                </div>
+            </div>
+            
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <h3>プレビュー</h3>
+                <textarea id="preview" readonly></textarea>
+                <button id="downloadBtn" class="download-btn">
+                    <span class="btn-icon">⬇️</span>
+                    ダウンロード
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <small>v1.0.0 | Firefox拡張機能</small>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
