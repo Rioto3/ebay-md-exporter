@@ -1,0 +1,50 @@
+{
+  "manifest_version": 2,
+  "name": "eBay MD Exporter",
+  "version": "1.0.0",
+  "description": "eBay商品詳細をMarkdown形式でエクスポートするFirefox拡張機能",
+
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "*://*.ebay.com/*",
+    "*://*.ebay.co.jp/*"
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.ebay.com/itm/*",
+        "*://*.ebay.co.jp/itm/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "eBay MD Exporter",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+
+  "web_accessible_resources": [
+    "markdown-generator.js"
+  ]
+}
