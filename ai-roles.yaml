@@ -1,0 +1,84 @@
+# AI役割定義ファイル
+# ebay-md-exporter プロジェクト
+
+project: "ebay-md-exporter"
+description: "eBay商品詳細をMarkdown形式でエクスポートするFirefox拡張機能"
+
+# 基本設定
+complexity: "standard"  # 中規模：Firefox拡張機能開発
+priority: "ux-first"    # UX優先、UI軽量、実装集中
+
+# AI役割定義
+roles:
+  ux-ai:
+    responsibility: "拡張機能UI設計・商品データ抽出ロジック・Markdownフォーマット・文書作成"
+    input: "Firefox拡張機能要件・eBay商品ページ構造"
+    output: 
+      - "manifest.json（拡張機能設定）"
+      - "popup.html（拡張UI）"
+      - "content.js（商品データ抽出）"
+      - "background.js（拡張機能制御）"
+      - "markdown-generator.js（MD生成）"
+      - "スタイル（popup.css）"
+    tools: ["HTML", "JavaScript", "Firefox WebExtensions API", "Markdown", "GitHub"]
+    authority: "leader"
+    decisions:
+      - "単独完結（小規模拡張機能）"
+      - "UI簡素化（機能重視）"
+      - "完了基準：動作確認済み"
+    
+  ui-ai:
+    responsibility: "拡張機能の視覚デザイン改善・ユーザビリティ向上"
+    input: "UX-AIの基本UI + 改善要求"
+    output:
+      - "高級CSS適用"
+      - "アニメーション・エフェクト"
+      - "レスポンシブ対応"
+    tools: ["CSS", "Firefox UI Guidelines"]
+    activation: "基本機能完成後、UI改善要求時"
+    
+  backend-ai:
+    responsibility: "データ処理最適化・外部API連携・パフォーマンス改善"
+    input: "UX-AIの基本実装 + 高度化要求"
+    output:
+      - "データ処理アルゴリズム改善"
+      - "eBay API連携（必要時）"
+      - "エラーハンドリング強化"
+    tools: ["JavaScript", "eBay API", "データ処理ライブラリ"]
+    activation: "基本機能完成後、高機能化要求時"
+
+# 作業管理（軽量運用）
+workflow:
+  repository_setup:
+    1: "リポジトリ作成（main）"
+    2: "develop ブランチ派生"
+    3: "README + ai-roles.yaml配置"
+  
+  development:
+    1: "UX-AI：拡張機能実装"
+    2: "develop で直接作業"
+    3: "段階的コミット"
+    4: "Firefox動作テスト"
+  
+  collaboration:
+    - "初期段階: UX-AI単独開発"
+    - "機能拡張: 必要時のみ他AI連携"
+    - "管理: コミットログ中心"
+
+# 技術仕様
+technical:
+  platform: "Firefox WebExtensions"
+  target: "eBay商品ページ（日本・米国）"
+  output: "Markdown(.md)ファイル"
+  permissions: 
+    - "activeTab"
+    - "downloads"
+    - "*://*.ebay.com/*"
+    - "*://*.ebay.co.jp/*"
+
+# プロジェクト設定
+github:
+  repository: "Rioto3/ebay-md-exporter"
+  main-branch: "main"
+  work-branch: "develop"
+  feature-prefix: "feature/"
